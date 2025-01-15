@@ -26,7 +26,7 @@ function init() {
 
   const existingTravelPlans = JSON.parse(localStorage.getItem("travelPlans"));
 
-  if (existingTravelPlans) {
+  if (existingTravelPlans && existingTravelPlans.length > 0) {
     console.log({ existingTravelPlans: existingTravelPlans });
     console.log({ existingTravelPlans: "hejsan" });
 

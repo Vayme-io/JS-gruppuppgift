@@ -64,11 +64,6 @@ function toggleDetails(planId) {
 }
 
 function displayTravelPlans() {
-  const existingTravelPlans =
-    JSON.parse(localStorage.getItem("travelPlans")) || [];
-
-  console.log({ existingTravelPlans: existingTravelPlans });
-
   const travelList = document.getElementById("travelList");
   if (!travelList) return;
 
@@ -77,6 +72,11 @@ function displayTravelPlans() {
   <button class="button" onclick="newTravelPlan()">
     Skapa ny resa
   </button>`;
+
+  const existingTravelPlans =
+    JSON.parse(localStorage.getItem("travelPlans")) || [];
+
+  console.log({ existingTravelPlans: existingTravelPlans });
 
   const plansToDisplay =
     existingTravelPlans.length > 0 ? existingTravelPlans : travelPlans;
@@ -87,7 +87,7 @@ function displayTravelPlans() {
 
     listItem.innerHTML = `
       <div class="travel-summary" onclick="toggleDetails(${plan.id})">
-        <span>${plan.travelFrom} ➜ ${plan.travelTo}</span>  
+        <span>${plan.travelFrom} ➜ ${plan.travelTo}</span>
       </div>
       <div id="details-${plan.id}" class="travel-details" style="display: none">
         <span>${getTransportIcon(plan.travelTransport)}</span>
