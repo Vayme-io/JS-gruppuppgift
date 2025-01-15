@@ -8,7 +8,6 @@ export const submitTravelFrom = (event) => {
   }
 
   travelFrom = userInput;
-  localStorage.setItem("travelFrom", userInput);
   // document.querySelectorAll(".landing-page")[1].classList.add("hidden");
   // document.querySelectorAll(".landing-page")[2].classList.remove("hidden");
   goToNextSection();

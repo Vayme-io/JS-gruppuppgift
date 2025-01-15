@@ -6,7 +6,6 @@ const transportSelect = document.querySelector("#transport");
 export function updateTravelTransport(event) {
   event.preventDefault(); // Prevent the form from submitting
   travelTransport = transportSelect.value; // Update global variable
-  localStorage.setItem("travelTransport", transportSelect.value);
 
   travelPlan.travelTransport = travelTransport; // Update travelPlan object
   // // Hide current section

@@ -43,6 +43,14 @@ function resetVariables() {
 function deleteTravelPlan(planId) {
   if (confirm("Är du säker att du vill radera den här resan?")) {
     travelPlans = travelPlans.filter((plan) => plan.id !== planId);
+
+    const existingTravelPlans =
+      JSON.parse(localStorage.getItem("travelPlans")) || [];
+    const updatedTravelPlans = existingTravelPlans.filter(
+      (plan) => plan.id !== planId
+    );
+    localStorage.setItem("travelPlans", JSON.stringify(updatedTravelPlans));
+
     displayTravelPlans();
   }
 }
@@ -56,45 +64,60 @@ function toggleDetails(planId) {
 }
 
 function displayTravelPlans() {
+  const existingTravelPlans =
+    JSON.parse(localStorage.getItem("travelPlans")) || [];
+
+  console.log({ travelPlansObject: travelPlansObject });
+
   const travelList = document.getElementById("travelList");
   if (!travelList) return;
 
   travelList.innerHTML = "";
-  travelList.innerHTML += `          <button class="button" onclick="newTravelPlan()">
-            Skapa ny resa
-          </button>`;
+  travelList.innerHTML += `
+  <button class="button" onclick="newTravelPlan()">
+    Skapa ny resa
+  </button>`;
 
-  travelPlans.forEach((plan) => {
+  const plansToDisplay =
+    existingTravelPlans.length > 0 ? existingTravelPlans : travelPlans;
+
+  plansToDisplay.forEach((plan) => {
     const listItem = document.createElement("div");
     listItem.className = "travel-plan";
 
     listItem.innerHTML = `
-            <div class="travel-summary" onclick="toggleDetails(${plan.id})">
-                <span>${plan.travelFrom} ➜ ${plan.travelTo}</span>
-                
-            </div>
-            <div id="details-${
-              plan.id
-            }" class="travel-details" style="display: none">
-            <span>${getTransportIcon(plan.travelTransport)}</span>
-                <span>${plan.bucketList.length} Aktiviteter planerade</span>
-                <p>Datum: ${plan.travelDate}</p>
-                <h4>Planerade aktiviteter:</h4>
-                <ul>
-                    ${plan.bucketList
-                      .map((item) => {
-                        if (item.checked) {
-                          return `<li class="checked">${item.todo}</li>`;
-                        }
-                        return `<li>${item.todo}</li>`;
-                      })
-                      .join("")}
-                </ul>
-                <button class="button" onclick="deleteTravelPlan(${
-                  plan.id
-                })">Radera</button>
-            </div>
-        `;
+      <div class="travel-summary" onclick="toggleDetails(${plan.id})">
+        <span>${plan.travelFrom} ➜ ${plan.travelTo}</span>  
+      </div>
+      <div id="details-${plan.id}" class="travel-details" style="display: none">
+        <span>${getTransportIcon(plan.travelTransport)}</span>
+        <span>${
+          Array.isArray(plan.bucketList) ? plan.bucketList.length : 0
+        } Aktiviteter planerade</span>
+        <p>Datum: ${plan.travelDate}</p>
+        <h4>Planerade aktiviteter:</h4>
+        <ul>
+          ${
+            Array.isArray(plan.bucketKust)
+              ? plan.bucketList
+                  .map((item) => {
+                    if (typeof item === "object" && item.todo) {
+                      return item.checked
+                        ? `<li class="checked">${item.todo}</li>`
+                        : `<li>${item.todo}</li>`;
+                    } else {
+                      return `<li>${item}</li>`;
+                    }
+                  })
+                  .join("")
+              : ""
+          }
+        </ul>
+        <button class="button" onclick="deleteTravelPlan(${
+          plan.id
+        })">Radera</button>
+      </div>
+  `;
 
     travelList.appendChild(listItem);
   });

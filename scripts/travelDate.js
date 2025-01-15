@@ -36,7 +36,6 @@ export function submitTravelDate(event) {
 
   // Store the full date as a string
   travelDate = `${day} ${monthNames[month]} ${year}`;
-  localStorage.setItem("travelDate", `${day} ${monthNames[month]} ${year}`);
 
   console.log("Resedatum (år, månad, dag):", travelDate); // Verify the stored value
 

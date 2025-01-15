@@ -94,9 +94,16 @@ let submitTodo = (event) => {
   travelPlan.bucketList.push({ todo, checked: false, id: todoId });
   console.log({ bucketList: travelPlan.bucketList });
 
-  localStorage.setItem("bucketList", JSON.stringify(travelPlan.bucketList));
-
   travelPlan.id = travelPlans.length;
+
+  const existingTravelPlans =
+    JSON.parse(localStorage.getItem("travelPlans")) || [];
+
+  existingTravelPlans.push(travelPlan);
+
+  console.log({ existingTravelPlans: existingTravelPlans });
+
+  localStorage.setItem("travelPlans", JSON.stringify(existingTravelPlans));
 
   todoParentElement.appendChild(todoElement);
 
@@ -117,7 +124,7 @@ let checkTodo = (todoId) => {
     travelPlan.bucketList[todoIndex].checked =
       !travelPlan.bucketList[todoIndex].checked;
 
-    localStorage.setItem("bucketList", JSON.stringify(travelPlan.bucketList));
+    localStorage.setItem("travelPlan", JSON.stringify(travelPlan));
   }
 };
 
