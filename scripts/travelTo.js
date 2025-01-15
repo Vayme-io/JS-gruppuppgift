@@ -15,6 +15,8 @@ export function submitTravelTo(event) {
   // spara input i den globala variabeln
   travelTo = userInput;
 
+  localStorage.setItem("travelTo", userInput);
+
   console.log("Resmål:", travelTo); // kontrollera att värdet lagras
 
   goToNextSection(); // anropa funktionen goToNextSection

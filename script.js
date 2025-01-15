@@ -1,10 +1,7 @@
-import { test } from "./scripts/landingPage.js";
-import { submitTravelTo } from "./scripts/travelTo.js";
-import { submitTravelFrom } from "./scripts/travelFrom.js";
 import { submitTravelDate } from "./scripts/travelDate.js";
+import { submitTravelFrom } from "./scripts/travelFrom.js";
+import { submitTravelTo } from "./scripts/travelTo.js";
 import { updateTravelTransport } from "./scripts/travelTransport.js";
-
-test();
 
 function init() {
   // let formTo = document.querySelector("#formTo");
