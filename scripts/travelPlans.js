@@ -98,7 +98,7 @@ function displayTravelPlans() {
         <h4>Planerade aktiviteter:</h4>
         <ul>
           ${
-            Array.isArray(plan.bucketKust)
+            Array.isArray(plan.bucketList)
               ? plan.bucketList
                   .map((item) => {
                     if (typeof item === "object" && item.todo) {
