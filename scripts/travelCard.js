@@ -49,6 +49,7 @@ export let initTravelCard = () => {
 };
 
 //  Used to submit a todo item to the bucket list
+
 let submitTodo = (event) => {
   event.preventDefault();
 
@@ -86,7 +87,10 @@ let submitTodo = (event) => {
   todoElement.classList.add("todo-item");
   todoElement.textContent = todo;
 
-  travelPlan.bucketList.push({ todo, checked: false });
+  travelPlan.bucketList.push({ todo, checked: false, id: Date.now() });
+  console.log({ bucketList: travelPlan.bucketList });
+
+  localStorage.setItem("bucketList", JSON.stringify(travelPlan.bucketList));
 
   travelPlan.id = travelPlans.length;
 
@@ -129,23 +133,3 @@ let saveTravelPlan = () => {
 
   displayTravelPlans();
 };
-
-// export let createRandomTravelPlan = () => {
-//   travelPlan.travelTo = `Stockholm {${Math.floor(Math.random() * 100)}}`;
-//   travelPlan.travelFrom = "Gothenburg";
-//   travelPlan.travelDate = "2022-12-24";
-//   travelPlan.travelTransport = "Train";
-//   travelPlan.bucketList = ["Gamla Stan", "Vasa Museum", "Skansen"];
-
-//   travelPlan.id = globalID;
-//   globalID++;
-//   travelPlans.push(travelPlan);
-//   console.log(travelPlans);
-//   travelPlan = {
-//     travelTo: "",
-//     travelFrom: "",
-//     travelDate: "",
-//     travelTransport: "",
-//     bucketList: [],
-//   };
-// };
