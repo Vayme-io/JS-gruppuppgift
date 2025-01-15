@@ -56,13 +56,17 @@ let submitTodo = (event) => {
   let todo = document.querySelector(".travel-card-todo-input").value;
 
   if (todo === "") {
-    console.log(todo);
+    console.log({ todo: todo });
     alert("Du måste skriva något i din att göra-lista");
     return;
   }
 
+  console.log({ todo: todo });
+
+  const todoId = Date.now();
   let todoParentElement = document.createElement("div");
   todoParentElement.classList.add("todo-item-container");
+  todoParentElement.dataset.todoId = todoId;
 
   let checkMarkElement = document.createElement("input");
 
@@ -70,7 +74,7 @@ let submitTodo = (event) => {
   todoParentElement.addEventListener("click", () => {
     todoParentElement.classList.toggle("checked");
     checkMarkElement.checked = !checkMarkElement.checked;
-    checkTodo(todo);
+    checkTodo(todoId);
   });
 
   checkMarkElement.type = "checkbox";
@@ -87,7 +91,7 @@ let submitTodo = (event) => {
   todoElement.classList.add("todo-item");
   todoElement.textContent = todo;
 
-  travelPlan.bucketList.push({ todo, checked: false, id: Date.now() });
+  travelPlan.bucketList.push({ todo, checked: false, id: todoId });
   console.log({ bucketList: travelPlan.bucketList });
 
   localStorage.setItem("bucketList", JSON.stringify(travelPlan.bucketList));
@@ -104,10 +108,17 @@ let submitTodo = (event) => {
 };
 
 //  Used to check the todo item in the bucket list
-let checkTodo = (todo) => {
-  let todoIndex = travelPlan.bucketList.findIndex((item) => item.todo === todo);
-  travelPlan.bucketList[todoIndex].checked =
-    !travelPlan.bucketList[todoIndex].checked;
+let checkTodo = (todoId) => {
+  let todoIndex = travelPlan.bucketList.findIndex((item) => item.id === todoId);
+
+  console.log({ todoIndex: todoIndex });
+
+  if (todoIndex !== -1) {
+    travelPlan.bucketList[todoIndex].checked =
+      !travelPlan.bucketList[todoIndex].checked;
+
+    localStorage.setItem("bucketList", JSON.stringify(travelPlan.bucketList));
+  }
 };
 
 //  Used to store the travel plans and then reset the travel plan object
