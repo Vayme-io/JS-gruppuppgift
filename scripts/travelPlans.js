@@ -67,7 +67,7 @@ function displayTravelPlans() {
   const existingTravelPlans =
     JSON.parse(localStorage.getItem("travelPlans")) || [];
 
-  console.log({ travelPlansObject: travelPlansObject });
+  console.log({ existingTravelPlans: existingTravelPlans });
 
   const travelList = document.getElementById("travelList");
   if (!travelList) return;

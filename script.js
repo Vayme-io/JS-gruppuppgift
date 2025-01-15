@@ -1,3 +1,4 @@
+import { jumpToTravelPlan } from "./scripts/localStorage.js";
 import { submitTravelDate } from "./scripts/travelDate.js";
 import { submitTravelFrom } from "./scripts/travelFrom.js";
 import { submitTravelTo } from "./scripts/travelTo.js";
@@ -22,6 +23,15 @@ function init() {
   document
     .querySelector(".travel-transport-form")
     .addEventListener("submit", updateTravelTransport);
+
+  const existingTravelPlans = JSON.parse(localStorage.getItem("travelPlans"));
+
+  if (existingTravelPlans) {
+    console.log({ existingTravelPlans: existingTravelPlans });
+    console.log({ existingTravelPlans: "hejsan" });
+
+    jumpToTravelPlan();
+  }
 }
 
 init();
