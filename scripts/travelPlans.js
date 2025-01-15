@@ -43,6 +43,7 @@ function resetVariables() {
 function deleteTravelPlan(planId) {
   if (confirm("Är du säker att du vill radera den här resan?")) {
     travelPlans = travelPlans.filter((plan) => plan.id !== planId);
+    localStorage.setItem("travelPlans", JSON.stringify(travelPlans));
     displayTravelPlans();
   }
 }
