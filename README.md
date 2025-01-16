@@ -2,7 +2,7 @@
 
 ## Beskrivning av projektet - skrevs efter projektet
 
-Vår grupp består av Ferenc, Melvin, Niklas, Rita, Arwin, Mohammed & Ella, och tillsammans byggde vi en applikation som fungerar som en respeplanerare. Designen är en Single Page Application (SPA) eller en "multi-step form" som består av sju sidor:
+Vår grupp består av Ferenc, Melvin, Niklas, Rita, Arwin, Mohammed & Ella, och tillsammans byggde vi en applikation som fungerar som en reseplanerare. Designen är en Single Page Application (SPA) eller en "multi-step form" som består av sju sidor:
 - Input-formulär med användarens önskade destination, Ritas ansvar
 - Input-formulär med användarens nuvarande plats, Arwins ansvar
 - Användaren väljer avresedatum, Niklas ansvar
