@@ -6,7 +6,7 @@ Vår grupp består av Ferenc, Melvin, Niklas, Rita, Arwin, Mohammed & Ella, och 
 - Input-formulär med användarens önskade destination, Ritas ansvar
 - Input-formulär med användarens nuvarande plats, Arwins ansvar
 - Användaren väljer avresedatum, Niklas ansvar
-- Användaren väljer transportmedel, Mohammeda ansvar
+- Användaren väljer transportmedel, Mohammeds ansvar
 - Användaren fyller i en bucketlist över händelser som den önskar uträtta på resmålet, Ferenc ansvar
 - Man får tillgång till resan i en lista, samt möjligheten att lägga till en resa och bli skickad till första sidan, Ellas ansvar
 
