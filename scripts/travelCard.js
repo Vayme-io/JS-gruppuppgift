@@ -111,6 +111,9 @@ let saveTravelPlan = () => {
   travelPlan.id = globalID;
   globalID++;
   travelPlans.push(travelPlan);
+
+  localStorage.setItem("travelPlans", JSON.stringify(travelPlans));
+
   console.log(travelPlans);
   travelPlan = {
     travelTo: "",

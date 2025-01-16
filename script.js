@@ -3,6 +3,7 @@ import { submitTravelTo } from "./scripts/travelTo.js";
 import { submitTravelFrom } from "./scripts/travelFrom.js";
 import { submitTravelDate } from "./scripts/travelDate.js";
 import { updateTravelTransport } from "./scripts/travelTransport.js";
+import { initLocalStorage } from "./scripts/localStorage.js";
 
 test();
 
@@ -25,6 +26,8 @@ function init() {
   document
     .querySelector(".travel-transport-form")
     .addEventListener("submit", updateTravelTransport);
+
+  initLocalStorage(); // Used to initialize the local storage
 }
 
 init();
